@@ -15,7 +15,7 @@ class CreateFaktursTable extends Migration
     {
         Schema::create('fakturs', function (Blueprint $table) {
             $table->id();
-            $table->string('KaregoriBarang');
+            $table->string('KategoriBarang');
             $table->string('NamaBarang');
             $table->integer('KuantitasBarang');
             $table->string('AlamatPengiriman');

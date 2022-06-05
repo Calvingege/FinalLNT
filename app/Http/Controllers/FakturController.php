@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Faktur;
+use App\Models\User;
 
 class FakturController extends Controller
 {
@@ -18,14 +19,14 @@ class FakturController extends Controller
         $request->validate([
             'KategoriBarang' => ['required', 'string', 'min:3', 'max:40'],
             // 'generateInvoice' => ['required', 'string'],
-            'NamaBarang' => ['required', 'confirmed', 'min:6', 'max:12'],
-            'KuantitasBarang' => ['required', 'confirmed', 'min:6', 'max:12'],
+            'NamaBarang' => ['required', 'string', 'min:6', 'max:12'],
+            'KuantitasBarang' => ['required', 'integer', 'min:6', 'max:12'],
             'AlamatPengiriman' => ['required', 'string', 'min:10', 'max:100'] 
             // Diawali dengan nomor 0 dan 8 
         ]);
 
         // masukin data ke database
-        $user = User::create([
+        Faktur::create([
             'KategoriBarang' => $request->KategoriBarang,
             // 'HargaBarang' => $request->HargaBarang,
             'NamaBarang'=> $request->NamaBarang,
@@ -36,12 +37,17 @@ class FakturController extends Controller
         return redirect('/');
     }
 
+    public function ShowFaktur(){
+        $Faktur = Faktur::all();
+        return view('ShowFaktur', compact('Faktur'));
+    }
+
     public function formUpdateFaktur($id){
         $Faktur = Faktur::findOrFail($id);
         return view('UpdateFaktur', compact('Faktur'));
     }
 
-    public function UpdateInventory($id, Request $request){
+    public function UpdateFaktur($id, Request $request){
         Faktur::findOrFail($id)->update([
             'KategoriBarang' => $request->KategoriBarang,
             // 'HargaBarang' => $request->HargaBarang,

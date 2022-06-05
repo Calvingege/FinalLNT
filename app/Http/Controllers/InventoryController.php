@@ -24,7 +24,7 @@ class InventoryController extends Controller
         ]);
 
         Inventory::create([
-            'Kategori' => $request->Kategori,
+            'Kategori' => $request->KategoriBarang,
             'NamaBarang' => $request->NamaBarang,
             'HargaBarang' => $request->HargaBarang,
             'JumlahBarang' => $request->JumlahBarang,
@@ -54,7 +54,7 @@ class InventoryController extends Controller
 
     public function UpdateInventory($id, Request $request){
         Inventory::findOrFail($id)->update([
-            'Kategori' => $request->Kategori,
+            'Kategori' => $request->KategoriBarang,
             'NamaBarang' => $request->NamaBarang,
             'HargaBarang' => $request->HargaBarang,
             'FotoBarang' => $request->FotoBarang

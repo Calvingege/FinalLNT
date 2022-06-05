@@ -111,15 +111,25 @@ Route::get(
     [FakturController::class, 'CreateFaktur']
 )->name('CreateFaktur');
 
-Route::get(
+Route::post(
     'store/faktur',
     [FakturController::class, 'StoreFaktur']
 )->name('StoreFaktur');
 
 Route::get(
+    'update/faktur/{id}',
+    [FakturController::class, 'formUpdateFaktur']
+)->name('formUpdateFaktur');
+
+Route::get(
     'show/faktur',
     [FakturController::class, 'ShowFaktur']
 )->name('ShowFaktur');
+
+Route::delete(
+    'delete/faktur/{id}',
+    [FakturController::class, 'DeleteFaktur']
+)->name('DeleteFaktur');
 
 // Auth::routes();
 

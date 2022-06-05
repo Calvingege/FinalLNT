@@ -29,32 +29,37 @@
           <label for="GenerateInvoice" class="form-label">Generate Invoice</label> 
           <!-- Ngak ngerti gimanaaa -->
           <!-- <input type="text" class="form-control" id="KategoriBarang" name="KategoriBarang"> -->
-          <!-- @error('KategoriBarang') -->
-              <!-- <label for="">{{$message}}</label>
-          @enderror -->
+          @error('KategoriBarang')
+              <label for="">{{$message}}</label>
+          @enderror
         </div>
         <div class="mb-3">
           <label for="KategoriBarang" class="form-label">Kategori Barang</label>
-          <input type="text" class="form-control" id="NamaBarang" name="NamaBarang">
-        </div>
-        <div class="mb-3">
-            <label for="HargaBarang" class="form-label">Harga Barang</label>
-            <input type="text" class="form-control" id="HargaBarang" name="HargaBarang">
+          <input type="text" class="form-control" id="KategoriBarang" name="KategoriBarang">
+          @error('KategoriBarang')
+              <label for="">{{$message}}</label>
+          @enderror
         </div>
         <div class="mb-3">
             <label for="NamaBarang" class="form-label">Nama Barang</label>
             <input type="text" class="form-control" id="NamaBarang" name="NamaBarang">
+            @error('NamaBarang')
+              <label for="">{{$message}}</label>
+          @enderror
         </div>
         <div class="mb-3">
             <label for="KuantitasBarang" class="form-label">Kuantitas Barang</label>
             <input type="text" class="form-control" id="KuantitasBarang" name="KuantitasBarang">
+            @error('KuantitasBarang')
+              <label for="">{{$message}}</label>
+          @enderror
         </div>
         <div class="mb-3">
             <label for="AlamatPengiriman" class="form-label">Alamat Pengiriman</label>
             <input type="text" class="form-control" id="AlamatPengiriman" name="AlamatPengiriman">
-            <!-- @error('FotoBarang')
+            @error('AlamatPengiriman')
                 <label for="">{{$message}}</label>
-            @enderror -->
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Simpan Data Faktur</button>
       </form>
