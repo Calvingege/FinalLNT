@@ -48,9 +48,9 @@
 
             <!-- Phone Number -->
             <div>
-                <x-label for="phone_number" :value="__('Phone Number')" />
+                <x-label for="PhoneNumber" :value="__('Phone Number')" />
 
-                <x-input id="phone_number" class="block mt-1 w-full" type="tel" name="phone_number" :value="old('phone_number')" required autofocus />
+                <x-input id="PhoneNumber" class="block mt-1 w-full" type="tel" name="PhoneNumber" :value="old('PhoneNumber')" required autofocus />
             </div>
 
             <div class="flex items-center justify-end mt-4">

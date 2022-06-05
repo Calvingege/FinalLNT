@@ -13,7 +13,6 @@
     <tr>
       <th scope="col">Kategori Barang</th>
       <th scope="col">Nama Barang</th>
-      <th scope="col">harga Barang</th>
       <th scope="col">Kuantitas Barang</th>
       <th scope="col">Alamat Pengiriman</th>
       <!-- <th scope="col">Foto Barang</th> -->
@@ -23,7 +22,6 @@
       @foreach ($Faktur as $Faktur)
       <tr>
         <th scope="row"><a href="{{route('ShowFaktur', $Faktur->id)}}">{{$Faktur->KategoriBarang}}</a></th>
-        <td>{{$Faktur->HargaBarang}}</td></td>
         <td>{{$Faktur->NamaBarang}}</td>
         <td>{{$Faktur->KuantitasBarang}}</td>
         <td>{{$Faktur->AlamatPengiriman}}</td>

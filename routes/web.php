@@ -3,6 +3,10 @@
 // namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\FakturController;
+use App\Http\Middleware\IsAdmin;
+
+require __DIR__.'/auth.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -27,12 +31,48 @@ Route::get('/view', function() {
     return view('view');
 })->middleware(['auth'])->name('view');
 
+// Ranah admin 
+Route::get(
+    '/create/inventory',
+    [InventoryController::class, 'CreateInventory']
+)->middleware(['IsAdmin'])->name('CreateInventory');
+
+Route::post(
+    '/store/inventory',
+    [InventoryController::class, 'StoreInventory']
+)->middleware(['IsAdmin'])->name('StoreInventory');
+
+Route::get(
+    'show/inventory',
+    [InventoryController::class, 'ShowInventory']
+)->middleware(['IsAdmin'])->name('ShowInventory');
+
+Route::get(
+    'show/inventory/{id}',
+    [InventoryController::class, 'ShowInventoryById']
+)->middleware(['IsAdmin'])->name('ShowInventoryById');
+
+Route::get(
+    'update/inventory/{id}',
+    [InventoryController::class, 'formUpdateInventory']
+)->middleware(['IsAdmin'])->name('formUpdateInventory');
+
+Route::patch(
+    'updating/inventory/{id}',
+    [InventoryController::class, 'UpdateInventory']
+)->middleware(['IsAdmin'])->name('UpdateInventory');
+
+Route::delete(
+    'delete/inventory/{id}',
+    [InventoryController::class, 'DeleteInventory']
+)->middleware(['IsAdmin'])->name('DeleteInventory');
+
+// untuk ranah user: 
+
 Route::get(
     '/create/inventory',
     [InventoryController::class, 'CreateInventory']
 )->name('CreateInventory');
-
-// Route::get('/create/inventory', 'App\Http\Controllers\InventoryController@CreateInventory')->name('CreateInventory');
 
 Route::post(
     '/store/inventory',
@@ -44,15 +84,10 @@ Route::get(
     [InventoryController::class, 'ShowInventory']
 )->name('ShowInventory');
 
-// Route::get(
-//     'show/inventory/{id}',
-//     [InventoryController::class, 'ShowInventoryById']
-// )->name('ShowInventoryById');
-
 Route::get(
-    'show/faktur',
-    [InventoryController::class, 'ShowFaktur']
-)->name('ShowFaktur');
+    'show/inventory/{id}',
+    [InventoryController::class, 'ShowInventoryById']
+)->name('ShowInventoryById');
 
 Route::get(
     'update/inventory/{id}',
@@ -65,11 +100,26 @@ Route::patch(
 )->name('UpdateInventory');
 
 Route::delete(
-    'delete/book/{id}',
+    'delete/inventory/{id}',
     [InventoryController::class, 'DeleteInventory']
 )->name('DeleteInventory');
 
-require __DIR__.'/auth.php';
+// ranah faktur bisa diakses oleh user
+
+Route::get(
+    'create/faktur',
+    [FakturController::class, 'CreateFaktur']
+)->name('CreateFaktur');
+
+Route::get(
+    'store/faktur',
+    [FakturController::class, 'StoreFaktur']
+)->name('StoreFaktur');
+
+Route::get(
+    'show/faktur',
+    [FakturController::class, 'ShowFaktur']
+)->name('ShowFaktur');
 
 // Auth::routes();
 

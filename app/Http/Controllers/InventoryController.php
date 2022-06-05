@@ -8,14 +8,14 @@ class InventoryController extends Controller
 {
     //
     public function CreateInventory() {
-        $this->authorize('admin');
+        // $this->authorize('admin'); -> Hapus ajaa
         return view('CreateInventory');
     }
 
     public function StoreInventory(Request $request){
-        $extension = $request->file('picture')->getClientOriginalExtension();
+        $extension = $request->file('FotoBarang')->getClientOriginalExtension();
         $fileName = $request->Kategori.'_'.$request->NamaBarang.'.'.$extension;
-        $request->file('picture')->storeAs('public/image', $fileName);
+        $request->file('FotoBarang')->storeAs('public/image', $fileName);
 
         // input validasi
         $request->validate([
@@ -25,7 +25,7 @@ class InventoryController extends Controller
 
         Inventory::create([
             'Kategori' => $request->Kategori,
-            'Namabarang' => $request->Namabarang,
+            'NamaBarang' => $request->NamaBarang,
             'HargaBarang' => $request->HargaBarang,
             'JumlahBarang' => $request->JumlahBarang,
             'FotoBarang' => $fileName
@@ -55,7 +55,7 @@ class InventoryController extends Controller
     public function UpdateInventory($id, Request $request){
         Inventory::findOrFail($id)->update([
             'Kategori' => $request->Kategori,
-            'NamaBarang' => $request->Kategori,
+            'NamaBarang' => $request->NamaBarang,
             'HargaBarang' => $request->HargaBarang,
             'FotoBarang' => $request->FotoBarang
         ]);

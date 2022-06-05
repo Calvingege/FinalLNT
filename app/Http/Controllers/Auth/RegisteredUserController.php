@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'min:3', 'max:40'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:6', 'max:12', Rules\Password::defaults()],
-            'PhoneNumber' => ['required|regex:/(0)(8)/'] 
+            'PhoneNumber' => ['required', 'startswith:"08"'] 
             // Diawali dengan nomor 0 dan 8 
         ]);
 

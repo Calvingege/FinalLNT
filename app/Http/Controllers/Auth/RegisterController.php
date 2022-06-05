@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'min:3', 'max:40'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'PhoneNumber' => ['required|regex:/(0)(8)/'] // diawali dengan nomor 0 dan 8 
+            'PhoneNumber' => ['required', 'startswith:"08"'] // diawali dengan nomor 0 dan 8 
         ]);
     }
 

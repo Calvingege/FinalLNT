@@ -7,8 +7,8 @@ use App\Models\Faktur;
 class FakturController extends Controller
 {
     //
-    public function CreateInventory() {
-        $this->authorize('user');
+    public function CreateFaktur() {
+        // $this->authorize('user');
         return view('CreateFaktur');
     }
 
@@ -17,7 +17,7 @@ class FakturController extends Controller
         // input validasi
         $request->validate([
             'KategoriBarang' => ['required', 'string', 'min:3', 'max:40'],
-            'generateInvoice' => ['required', 'string'],
+            // 'generateInvoice' => ['required', 'string'],
             'NamaBarang' => ['required', 'confirmed', 'min:6', 'max:12'],
             'KuantitasBarang' => ['required', 'confirmed', 'min:6', 'max:12'],
             'AlamatPengiriman' => ['required', 'string', 'min:10', 'max:100'] 
@@ -27,10 +27,10 @@ class FakturController extends Controller
         // masukin data ke database
         $user = User::create([
             'KategoriBarang' => $request->KategoriBarang,
-            'HargaBarang' => $request->HargaBarang,
+            // 'HargaBarang' => $request->HargaBarang,
             'NamaBarang'=> $request->NamaBarang,
             'KuantitasBarang' => $request->KuantitasBarang,
-            'AlamatPengiriman' => $request->PhoneNumber,
+            'AlamatPengiriman' => $request->AlamatPengiriman,
         ]);
 
         return redirect('/');
@@ -43,10 +43,10 @@ class FakturController extends Controller
 
     public function UpdateInventory($id, Request $request){
         Faktur::findOrFail($id)->update([
-            'KategoriBarang' => $request->Kategori,
-            'HargaBarang' => $request->Kategori,
-            'NamaBarang' => $request->HargaBarang,
-            'KuantitasBarang' => $request->FotoBarang,
+            'KategoriBarang' => $request->KategoriBarang,
+            // 'HargaBarang' => $request->HargaBarang,
+            'NamaBarang' => $request->NamaBarang,
+            'KuantitasBarang' => $request->KuantitasBarang,
             'AlamatPengiriman' => $request->AlamatPengiriman
         ]);
 
